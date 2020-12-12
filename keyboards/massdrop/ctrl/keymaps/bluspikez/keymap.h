@@ -48,10 +48,6 @@ led_flags_t rgb_time_out_saved_flag;    // Store LED flag before timeout so it c
 enum layout_names {
     _KL=0,       // Keys Layout: The main keyboard layout that has all the characters
     _FL,         // Function Layout: The function key activated layout with default functions and some added ones
-    _GL,         // GIT Layout: GIT shortcuts and macros
-    _VL,         // VIM Layout: VIM shorcuts and macros
-    _YL,         // Yakuake Layout: Yakuake drop-down terminal shortcuts and macros
-    _EL,         // KDE Layout: Shortcuts for KDE desktop using default KDE shortcuts settings
 };
 
 enum ctrl_keycodes {
@@ -68,25 +64,4 @@ enum ctrl_keycodes {
     ROUT_FM,               // RGB timeout fast mode toggle
     COPY_ALL,              // Copy all text using ctrl(a+c)
     TERMINAL,              // CTRL+ALT+T
-};
-
-enum string_macro_keycodes {
-    // The start of this enum should always be equal to end of ctrl_keycodes + 1
-    G_INIT = TERMINAL + 1, // git init
-    G_CLONE,               // git clone
-    G_CONF,                // git config --global
-    G_ADD,                 // git add
-    G_DIFF,                // git diff
-    G_RESET,               // git reset
-    G_REBAS,               // git rebase
-    G_BRANH,               // git branch
-    G_CHECK,               // git checkout
-    G_MERGE,               // git merge
-    G_REMTE,               // git remote add
-    G_FETCH,               // git fetch
-    G_PULL,                // git pull
-    G_PUSH,                // git push
-    G_COMM,                // git commit
-    G_STAT,                // git status
-    G_LOG,                 // git log
 };
