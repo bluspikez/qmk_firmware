@@ -55,12 +55,6 @@ enum layout_names {
     _EL,         // KDE Layout: Shortcuts for KDE desktop using default KDE shortcuts settings
 };
 
-enum tapdance_keycodes {
-    TD_LGUI_ML = 0,     // Tap dance key to switch to mouse layer _ML
-    TD_APP_YL,
-    TD_CTRL_TERM,       // Tap dance key to open terminal on LCTRL double press
-};
-
 enum ctrl_keycodes {
     U_T_AUTO = SAFE_RANGE, // USB Extra Port Toggle Auto Detect / Always Active
     U_T_AGCR,              // USB Toggle Automatic GCR control
