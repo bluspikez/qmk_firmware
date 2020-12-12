@@ -48,7 +48,6 @@ led_flags_t rgb_time_out_saved_flag;    // Store LED flag before timeout so it c
 enum layout_names {
     _KL=0,       // Keys Layout: The main keyboard layout that has all the characters
     _FL,         // Function Layout: The function key activated layout with default functions and some added ones
-    _ML,         // Mouse Layout: Mouse Keys and mouse movement
     _GL,         // GIT Layout: GIT shortcuts and macros
     _VL,         // VIM Layout: VIM shorcuts and macros
     _YL,         // Yakuake Layout: Yakuake drop-down terminal shortcuts and macros
@@ -61,7 +60,6 @@ enum ctrl_keycodes {
     DBG_TOG,               // DEBUG Toggle On / Off
     DBG_MTRX,              // DEBUG Toggle Matrix Prints
     DBG_KBD,               // DEBUG Toggle Keyboard Prints
-    DBG_MOU,               // DEBUG Toggle Mouse Prints
     MD_BOOT,               // Restart into bootloader after hold timeout
     SEL_CPY,               // Select Copy. Select the word cursor is pointed at and copy, using double mouse click and ctrl+c
     ROUT_TG,               // Timeout Toggle. Toggle idle LED time out on or off
