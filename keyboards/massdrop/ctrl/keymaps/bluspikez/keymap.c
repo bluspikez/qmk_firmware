@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TD(TD_CTRL_TERM),  TD(TD_LGUI_ML), KC_LALT,                   KC_SPC,                             KC_RALT, TT(_FL), TD(TD_APP_YL), KC_RCTL,          KC_LEFT, KC_DOWN, KC_RGHT
     ),
     [_FL] = LAYOUT(
-        _______, DM_PLY1, DM_PLY2, _______,  _______, DM_REC1, DM_REC2, _______,  _______,  DM_RSTP, _______, KC_WAKE, KC_SLEP,          KC_MUTE, TERM_ON, TERM_OFF,
+        _______, _______, _______, _______,  _______, _______, _______, _______,  _______,  _______, _______, KC_WAKE, KC_SLEP,          KC_MUTE, TERM_ON, TERM_OFF,
         _______, _______, TG(_ML), TG(_GL),  TG(_VL), TG(_YL), _______, _______,  _______,  ROUT_FM, ROUT_TG, ROUT_VD, ROUT_VI, _______, KC_MSTP, KC_MPLY, KC_VOLU,
         RGB_M_P, RGB_SPD, RGB_VAI, RGB_SPI,  RGB_HUI, RGB_SAI, _______, U_T_AUTO, U_T_AGCR, _______, _______, _______, _______, _______, KC_MPRV, KC_MNXT, KC_VOLD,
         _______, RGB_RMOD,RGB_VAD, RGB_MOD,  RGB_HUD, RGB_SAD, _______, _______,  _______,  _______, _______, _______, _______,
@@ -361,15 +361,14 @@ void set_layer_color(int layer) {
             .s = pgm_read_byte(&ledmap[layer][i][1]),
             .v = pgm_read_byte(&ledmap[layer][i][2]),
         };
-        if (hsv.h > 0 || hsv.s > 0 || hsv.v > 0) {
+        if (hsv.h > 1 || hsv.s > 1 || hsv.v > 1) {
+            //use >1 here as 0 means turned off and 1 means led tester
             RGB rgb = hsv_to_rgb(hsv);
             float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
             rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
         } else if (hsv.h == 0 && hsv.s == 0 && hsv.v == 0) {
             //this block disables all keys on all layers set to 0
             rgb_matrix_set_color(i, 0, 0, 0);
-            //note that above we've also set up -1 as a valid value, so that on a layer a key can be set
-            //to avoid being disabled and instead carry-over the color from the lower layer
         }
     }
 }
@@ -382,15 +381,3 @@ void rgb_matrix_indicators_user(void) {
         }
     set_layer_color(get_highest_layer(layer_state));
 }
-
-/* This is a test function for Raw HID, which is currently not implemented for this keyboard */
-/**
-void raw_hid_receive(uint8_t *data, uint8_t length) {
-    uint8_t response[RAW_EPSIZE];
-    memset(response+1, 'C', 1);
-    memset(response+2, 'T', 1);
-    memset(response+3, 'R', 1);
-    memset(response+4, 'L', 1);
-    raw_hid_send(data, length);
-}
-*/
