@@ -61,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef _______
 #undef _______
-#define _______ {1, 1, 1}
-#define _TESTER {0, 0, 0}
+#define _______ {0, 0, 0}
+#define _TESTER {1, 1, 1}
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [_FL] = {
